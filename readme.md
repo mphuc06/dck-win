@@ -20,9 +20,6 @@ Windows inside a Docker container.
  - KVM acceleration
  - Web-based viewer
 
-## Video 📺
-
-[![Youtube](https://img.youtube.com/vi/xhGYobuG508/0.jpg)](https://www.youtube.com/watch?v=xhGYobuG508)
 
 ## Usage 🐳
 
@@ -118,6 +115,7 @@ kubectl apply -f https://raw.githubusercontent.com/dockur/windows/refs/heads/mas
   | `2012` | Windows Server 2012       | 4.3 GB   |
   | `2008` | Windows Server 2008       | 3.0 GB   |
   | `2003` | Windows Server 2003       | 0.6 GB   |
+  | `no have` | Oprekin 10 21H2(Tiny 11 )       | 1.1 GB   |
 
 > [!TIP]
 > To install ARM64 versions of Windows use [dockur/windows-arm](https://github.com/dockur/windows-arm/).
