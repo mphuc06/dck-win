@@ -14,16 +14,16 @@
 
 Windows inside a Docker container.
 
-## Features ✨
+## Tính năng ✨
 
  - ISO downloader
  - KVM acceleration
  - Web-based viewer
 
 
-## Usage 🐳
+## Để sử dụng 🐳
 
-##### Via Docker Compose:
+##### Với Docker Compose:
 
 ```yaml
 services:
@@ -47,50 +47,42 @@ services:
     stop_grace_period: 2m
 ```
 
-##### Via Docker CLI:
+##### Với Docker CLI:
 
 ```bash
 docker run -it --rm --name windows -e "VERSION=11" -p 8006:8006 --device=/dev/kvm --device=/dev/net/tun --cap-add NET_ADMIN -v "${PWD:-.}/windows:/storage" --stop-timeout 120 docker.io/dockurr/windows
 ```
 
-##### Via Kubernetes:
+##### Với Github Codespaces:
 
-```shell
-kubectl apply -f https://raw.githubusercontent.com/dockur/windows/refs/heads/master/kubernetes.yml
-```
-
-##### Via Github Codespaces:
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dockur/windows)
-
-##### Via a graphical installer:
-
-[![Download WinBoat](https://github.com/dockur/windows/raw/master/.github/winboat.png)](https://winboat.app)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new?hide_repo_select=true&ref=master&repo=1132827945&skip_quickstart=true)
 
 ## FAQ 💬
 
-### How do I use it?
+### Làm thế nào để tôi sử dụng nó?
 
-  Very simple! These are the steps:
+  Rất đơn giản, hãy làm theo tôi:
   
-  - Start the container and connect to [port 8006](http://127.0.0.1:8006/) using your web browser.
+  - Vào nút "Code", chọn nút "..." ở phần Codespace và chọn nút "New with options...".
 
-  - Sit back and relax while the magic happens, the whole installation will be performed fully automatic.
+  - Chọn phiên bản cần cài đặt, cấu hình Codespace và bấm tạo Codespace.
 
-  - Once you see the desktop, your Windows installation is ready for use.
+  - Hãy thư giãn vì nó sẽ tự động cài đặt cho bạn.
+   
+  - Chỉ một lúc thôi, bạn sẽ được trải nghiệm Windows trên Github Codespace với port 8006
   
-  Enjoy your brand new machine, and don't forget to star this repo!
+  Don't forget to star this repo!
 
 ### How do I select the Windows version?
 
-  By default, Windows 11 Pro will be installed. But you can add the `VERSION` environment variable to your compose file, in order to specify an alternative Windows version to be downloaded:
+  Mặc định khi cài, Windows 11 Pro sẽ được cài mặc định, nếu bạn muốn thay đổi thì bạn có thể file VERSION trong file yaml
 
   ```yaml
   environment:
     VERSION: "11"
   ```
 
-  Select from the values below:
+  Chọn từ các giá trị dưới đây:
   
   | **Value** | **Version**            | **Size** |
   |---|---|---|
@@ -115,64 +107,65 @@ kubectl apply -f https://raw.githubusercontent.com/dockur/windows/refs/heads/mas
   | `2012` | Windows Server 2012       | 4.3 GB   |
   | `2008` | Windows Server 2008       | 3.0 GB   |
   | `2003` | Windows Server 2003       | 0.6 GB   |
-  | `no have` | Oprekin 10 21H2(Tiny 11 )       | 1.1 GB   |
+  | `no have` | Oprekin 10 21H2(200)       | 1.1 GB   |
+  | `no have` | Oprekin 11 23H2(170)       | 1.5 GB   |
+  | `no have` | Oprekin 11 25H2(Tiny 11 )       | 1.6 GB   |
 
-> [!TIP]
-> To install ARM64 versions of Windows use [dockur/windows-arm](https://github.com/dockur/windows-arm/).
+> [!MẸO]
+> Để cài đặt phiên bản ARM64 của Windows, hãy sử dụng [dockur/windows-arm](https://github.com/dockur/windows-arm/).
 
-### How do I change the storage location?
+### Làm cách nào để thay đổi vị trí lưu trữ?
 
-  To change the storage location, include the following bind mount in your compose file:
+  Để thay đổi vị trí lưu trữ, hãy đưa liên kết gắn kết sau vào tệp soạn thảo của bạn:
 
   ```yaml
   volumes:
     - ./windows:/storage
   ```
 
-  Replace the example path `./windows` with the desired storage folder or named volume.
+  Thay thế đường dẫn ví dụ `./windows` bằng thư mục lưu trữ hoặc ổ đĩa được đặt tên mong muốn.
 
-### How do I change the size of the disk?
+### Làm cách nào để thay đổi kích thước của đĩa?
 
-  To expand the default size of 64 GB, add the `DISK_SIZE` setting to your compose file and set it to your preferred capacity:
+ Để mở rộng kích thước mặc định là 64 GB, hãy thêm cài đặt `DISK_SIZE` vào tệp soạn thảo của bạn và đặt nó theo dung lượng ưa thích của bạn:
 
   ```yaml
   environment:
     DISK_SIZE: "256G"
   ```
   
-> [!TIP]
-> This can also be used to resize the existing disk to a larger capacity without any data loss. However you will need to [manually extend the disk partition](https://learn.microsoft.com/en-us/windows-server/storage/disk-management/extend-a-basic-volume?tabs=disk-management) since the added disk space will appear as unallocated.
+> [!MẸO]
+> Điều này cũng có thể được sử dụng để thay đổi kích thước ổ đĩa hiện có thành dung lượng lớn hơn mà không bị mất dữ liệu. Tuy nhiên, bạn sẽ cần [mở rộng phân vùng ổ đĩa theo cách thủ công](https://learn.microsoft.com/en-us/windows-server/storage/disk-management/extend-a-basic-volume?tabs=disk-management) vì dung lượng ổ đĩa đã thêm sẽ xuất hiện dưới dạng chưa được phân bổ.
 
-### How do I share files with the host?
+### Làm cách nào để chia sẻ tập tin với máy chủ?
 
-  After installation there will be a folder called `Shared` on your desktop, which can be used to exchange files with the host machine.
-  
-  To select a folder on the host for this purpose, include the following bind mount in your compose file:
+ Sau khi cài đặt sẽ có một thư mục tên là `Shared` trên màn hình của bạn, thư mục này có thể được sử dụng để trao đổi tập tin với máy chủ.
+
+ Để chọn một thư mục trên máy chủ cho mục đích này, hãy đưa phần gắn kết liên kết sau vào tệp soạn thảo của bạn:
 
   ```yaml
   volumes:
     -  ./example:/shared
   ```
 
-  Replace the example path `./example` with your desired shared folder, which then will become visible as `Shared`.
+  Thay thế đường dẫn mẫu `./example` bằng thư mục dùng chung mà bạn mong muốn, sau đó thư mục này sẽ hiển thị dưới dạng `Được chia sẻ`.
 
-### How do I change the amount of CPU or RAM?
+### Làm cách nào để thay đổi dung lượng CPU hoặc RAM?
 
-  By default, Windows will be allowed to use 2 CPU cores and 4 GB of RAM.
+ Theo mặc định, Windows sẽ được phép sử dụng 2 nhân CPU và 4 GB RAM.
 
-  If you want to adjust this, you can specify the desired amount using the following environment variables:
-
+ Nếu bạn muốn điều chỉnh điều này, bạn có thể chỉ định số lượng mong muốn bằng cách sử dụng các biến môi trường sau:
   ```yaml
   environment:
     RAM_SIZE: "8G"
     CPU_CORES: "4"
   ```
 
-### How do I configure the username and password?
+### Làm cách nào để định cấu hình tên người dùng và mật khẩu?
 
-  By default, a user called `Docker` is created and its password is `admin`.
+ Theo mặc định, người dùng có tên `Docker` được tạo và mật khẩu của nó là `admin`.
 
-  If you want to use different credentials during installation, you can configure them in your compose file:
+ Nếu muốn sử dụng các thông tin xác thực khác trong khi cài đặt, bạn có thể định cấu hình chúng trong tệp soạn thảo của mình:
 
   ```yaml
   environment:
@@ -180,22 +173,21 @@ kubectl apply -f https://raw.githubusercontent.com/dockur/windows/refs/heads/mas
     PASSWORD: "gates"
   ```
 
-### How do I select the Windows language?
+### Làm cách nào để chọn ngôn ngữ Windows?
 
-  By default, the English version of Windows will be downloaded.
-  
-  But you can add the `LANGUAGE` environment variable to your compose file, in order to specify an alternative language to be downloaded:
+ Theo mặc định, phiên bản tiếng Anh của Windows sẽ được tải xuống.
 
+ Nhưng bạn có thể thêm biến môi trường `LANGUAGE` vào tệp soạn thảo của mình để chỉ định ngôn ngữ thay thế sẽ được tải xuống:
   ```yaml
   environment:
     LANGUAGE: "French"
   ```
   
-  You can choose between: 🇦🇪 Arabic, 🇧🇬 Bulgarian, 🇨🇳 Chinese, 🇭🇷 Croatian, 🇨🇿 Czech, 🇩🇰 Danish, 🇳🇱 Dutch, 🇬🇧 English, 🇪🇪 Estonian, 🇫🇮 Finnish, 🇫🇷 French, 🇩🇪 German, 🇬🇷 Greek, 🇮🇱 Hebrew, 🇭🇺 Hungarian, 🇮🇹 Italian, 🇯🇵 Japanese, 🇰🇷 Korean, 🇱🇻 Latvian, 🇱🇹 Lithuanian, 🇳🇴 Norwegian, 🇵🇱 Polish, 🇵🇹 Portuguese, 🇷🇴 Romanian, 🇷🇺 Russian, 🇷🇸 Serbian, 🇸🇰 Slovak, 🇸🇮 Slovenian, 🇪🇸 Spanish, 🇸🇪 Swedish, 🇹🇭 Thai, 🇹🇷 Turkish and 🇺🇦 Ukrainian.
+ Bạn có thể chọn giữa: 🇦🇪 tiếng Ả Rập, 🇧🇬 tiếng Bungari, 🇨🇳 tiếng Trung, 🇭🇷 tiếng Croatia, 🇨🇿 tiếng Séc, 🇩🇰 tiếng Đan Mạch, 🇳🇱 tiếng Hà Lan, 🇬🇧 tiếng Anh, 🇪🇪 tiếng Estonia, 🇫🇮 Tiếng Phần Lan, 🇫🇷 Tiếng Pháp, 🇩🇪 Tiếng Đức, 🇬🇷 Tiếng Hy Lạp, 🇮🇱 Tiếng Do Thái, 🇭🇺 Tiếng Hungary, 🇮🇹 Tiếng Ý, 🇯🇵 Tiếng Nhật, 🇰🇷 Tiếng Hàn, 🇱🇻 Tiếng Latvia, 🇱🇹 Tiếng Litva, 🇳🇴 Na Uy, 🇵🇱 Ba Lan, 🇵🇹 Bồ Đào Nha, 🇷🇴 Rumani, 🇷🇺 Nga, 🇷🇸 Serbia, 🇸🇰 Slovak, 🇸🇮 Slovenia, 🇪🇸 Tây Ban Nha, 🇸🇪 Thụy Điển, 🇹🇭 Thái, 🇹🇷 Thổ Nhĩ Kỳ và 🇺🇦 Ukraina.
 
-### How do I select the keyboard layout?
+### Làm cách nào để chọn bố cục bàn phím?
 
-  If you want to use a keyboard layout or locale that is not the default for your selected language, you can add  `KEYBOARD` and `REGION` variables like this:
+ Nếu bạn muốn sử dụng bố cục bàn phím hoặc ngôn ngữ không phải là mặc định cho ngôn ngữ đã chọn của mình, bạn có thể thêm các biến `KEYBOARD` và `REGION` như thế này:
 
   ```yaml
   environment:
@@ -203,9 +195,9 @@ kubectl apply -f https://raw.githubusercontent.com/dockur/windows/refs/heads/mas
     KEYBOARD: "en-US"
   ```
 
-### How do I install a custom image?
+### Làm cách nào để cài đặt hình ảnh tùy chỉnh?
 
-  In order to download an unsupported ISO image, specify its URL in the `VERSION` environment variable:
+ Để tải xuống ảnh ISO không được hỗ trợ, hãy chỉ định URL của nó trong biến môi trường `VERSION`:
   
   ```yaml
   environment:
