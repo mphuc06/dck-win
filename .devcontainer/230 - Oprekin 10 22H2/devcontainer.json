@@ -1,0 +1,19 @@
+{
+  "name": "Oprekin 10 22H2(230)",
+  "service": "windows",
+  "containerEnv": {
+    "VERSION": "https://archive.org/download/win-10-pro-22-h-2.5737-oprekin.com/Win10Pro_22H2.5737_oprekin.com.iso"
+  },
+  "forwardPorts": [8006],
+  "portsAttributes": {
+    "8006": {
+      "label": "Web",
+      "onAutoForward": "notify"
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  }, 
+  "dockerComposeFile": "../codespaces.yml",
+  "initializeCommand": "docker system prune --all --force"
+}
