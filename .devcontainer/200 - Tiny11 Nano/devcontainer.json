@@ -1,5 +1,5 @@
 {
-  "name": "Oprekin 10 21H2",
+  "name": "Oprekin 10 21H2(200)",
   "service": "windows",
   "containerEnv": {
     "VERSION": "https://drive.usercontent.google.com/download?id=16-TfvTO179bv9vLkZnTGyooTuCePjwbG&export=download&authuser=0&confirm=t&uuid=9b801b96-bdee-4970-8c72-95cdbf027635&at=ANTm3cxLF5x4uRQAEjd2f8rre92E:1768226750995"
