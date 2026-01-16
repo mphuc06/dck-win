@@ -204,52 +204,50 @@ docker run -it --rm --name windows -e "VERSION=11" -p 8006:8006 --device=/dev/kv
     VERSION: "https://example.com/win.iso"
   ```
 
-  Alternatively, you can also skip the download and use a local file instead, by binding it in your compose file in this way:
+  Ngoài ra, bạn cũng có thể bỏ qua quá trình tải xuống và thay vào đó sử dụng tệp cục bộ bằng cách liên kết tệp đó trong tệp soạn thảo của bạn theo cách sau:
   
   ```yaml
   volumes:
     - ./example.iso:/boot.iso
   ```
 
-  Replace the example path `./example.iso` with the filename of your desired ISO file. The value of `VERSION` will be ignored in this case.
+### Làm cách nào để chạy tập lệnh sau khi cài đặt?
 
-### How do I run a script after installation?
+ Để chạy tập lệnh của riêng bạn sau khi cài đặt, bạn có thể tạo một tệp có tên `install.bat` và đặt nó vào một thư mục cùng với bất kỳ tệp bổ sung nào mà nó cần (ví dụ: phần mềm sẽ được cài đặt).
 
-  To run your own script after installation, you can create a file called `install.bat` and place it in a folder together with any additional files it needs (software to be installed for example).
-  
-  Then bind that folder in your compose file like this:
+ Sau đó liên kết thư mục đó trong tệp soạn thảo của bạn như thế này:
 
   ```yaml
   volumes:
     -  ./example:/oem
   ```
 
-  The example folder `./example` will be copied to `C:\OEM` and the containing `install.bat` will be executed during the last step of the automatic installation.
+ Thư mục ví dụ `./example` sẽ được sao chép vào `C:\OEM` và thư mục chứa `install.bat` sẽ được thực thi trong bước cuối cùng của quá trình cài đặt tự động.
 
-### How do I perform a manual installation?
+### Làm cách nào để thực hiện cài đặt thủ công?
 
-  It's recommended to stick to the automatic installation, as it adjusts various settings to prevent common issues when running Windows inside a virtual environment.
+ Bạn nên sử dụng cài đặt tự động vì nó điều chỉnh các cài đặt khác nhau để ngăn các sự cố thường gặp khi chạy Windows trong môi trường ảo.
 
-  However, if you insist on performing the installation manually at your own risk, add the following environment variable to your compose file:
+ Tuy nhiên, nếu bạn nhất quyết thực hiện cài đặt theo cách thủ công, bạn sẽ phải tự chịu rủi ro, hãy thêm biến môi trường sau vào tệp soạn thảo của mình:
 
   ```yaml
   environment:
     MANUAL: "Y"
   ```
 
-### How do I connect using RDP?
+### Làm cách nào để kết nối bằng RDP?
 
-  The web-viewer is mainly meant to be used during installation, as its picture quality is low, and it has no audio or clipboard for example.
+ Trình xem web chủ yếu được sử dụng trong quá trình cài đặt, vì chất lượng hình ảnh của nó thấp và không có âm thanh hoặc bảng nhớ tạm chẳng hạn.
 
-  So for a better experience you can connect using any Microsoft Remote Desktop client to the IP of the container, using the username `Docker` and password `admin`.
+ Vì vậy, để có trải nghiệm tốt hơn, bạn có thể kết nối bằng bất kỳ ứng dụng khách Microsoft Remote Desktop nào với IP của vùng chứa, sử dụng tên người dùng `Docker` và mật khẩu `admin`.
 
-  There is a RDP client for [Android](https://play.google.com/store/apps/details?id=com.microsoft.rdc.androidx) available from the Play Store and one for [iOS](https://apps.apple.com/nl/app/microsoft-remote-desktop/id714464092?l=en-GB) in the Apple Store. For Linux you can use [FreeRDP](https://www.freerdp.com/) and on Windows just type `mstsc` in the search box.
+ Có một ứng dụng khách RDP cho [Android](https://play.google.com/store/apps/details?id=com.microsoft.rdc.androidx) có sẵn trên Cửa hàng Play và một ứng dụng dành cho [iOS](https://apps.apple.com/nl/app/microsoft-remote-desktop/id714464092?l=en-GB) trong Apple Store. Đối với Linux, bạn có thể sử dụng [FreeRDP](https://www.freerdp.com/) và trên Windows, chỉ cần nhập `mstsc` vào hộp tìm kiếm.
 
-### How do I assign an individual IP address to the container?
+### Làm cách nào để gán địa chỉ IP riêng lẻ cho vùng chứa?
 
-  By default, the container uses bridge networking, which shares the IP address with the host. 
+ Theo mặc định, container sử dụng mạng cầu nối, chia sẻ địa chỉ IP với máy chủ.
 
-  If you want to assign an individual IP address to the container, you can create a macvlan network as follows:
+ Nếu bạn muốn gán một địa chỉ IP riêng cho vùng chứa, bạn có thể tạo mạng macvlan như sau:
 
   ```bash
   docker network create -d macvlan \
@@ -259,9 +257,9 @@ docker run -it --rm --name windows -e "VERSION=11" -p 8006:8006 --device=/dev/kv
       -o parent=eth0 vlan
   ```
   
-  Be sure to modify these values to match your local subnet. 
+  Hãy nhớ sửa đổi các giá trị này để phù hợp với mạng con cục bộ của bạn.
 
-  Once you have created the network, change your compose file to look as follows:
+ Khi bạn đã tạo mạng, hãy thay đổi tệp soạn thảo của bạn trông như sau:
 
   ```yaml
   services:
@@ -277,16 +275,16 @@ docker run -it --rm --name windows -e "VERSION=11" -p 8006:8006 --device=/dev/kv
       external: true
   ```
  
-  An added benefit of this approach is that you won't have to perform any port mapping anymore, since all ports will be exposed by default.
+ Một lợi ích bổ sung của phương pháp này là bạn sẽ không phải thực hiện bất kỳ ánh xạ cổng nào nữa vì tất cả các cổng sẽ được hiển thị theo mặc định.
 
-> [!IMPORTANT]  
-> This IP address won't be accessible from the Docker host due to the design of macvlan, which doesn't permit communication between the two. If this is a concern, you need to create a [second macvlan](https://blog.oddbit.com/post/2018-03-12-using-docker-macvlan-networks/#host-access) as a workaround.
+> [! QUAN TRỌNG]
+> Địa chỉ IP này sẽ không thể truy cập được từ máy chủ Docker do thiết kế của macvlan không cho phép liên lạc giữa hai địa chỉ. Nếu đây là vấn đề đáng lo ngại, bạn cần tạo [macvlan thứ hai](https://blog.oddbit.com/post/2018-03-12-USE-docker-macvlan-networks/#host-access) để giải quyết.
 
-### How can Windows acquire an IP address from my router?
+### Làm cách nào Windows có thể lấy địa chỉ IP từ bộ định tuyến của tôi?
 
-  After configuring the container for [macvlan](#how-do-i-assign-an-individual-ip-address-to-the-container), it is possible for Windows to become part of your home network by requesting an IP from your router, just like a real PC.
+ Sau khi định cấu hình vùng chứa cho [macvlan](#how-do-i-sign-an-individual-ip-address-to-the-container), Windows có thể trở thành một phần của mạng gia đình của bạn bằng cách yêu cầu IP từ bộ định tuyến của bạn, giống như một PC thực.
 
-  To enable this mode, in which the container and Windows will have separate IP addresses, add the following lines to your compose file:
+ Để bật chế độ này, trong đó vùng chứa và Windows sẽ có các địa chỉ IP riêng biệt, hãy thêm các dòng sau vào tệp soạn thảo của bạn:
 
   ```yaml
   environment:
@@ -297,10 +295,10 @@ docker run -it --rm --name windows -e "VERSION=11" -p 8006:8006 --device=/dev/kv
     - 'c *:* rwm'
   ```
 
-### How do I add multiple disks?
+### Làm cách nào để thêm nhiều đĩa?
 
-  To create additional disks, modify your compose file like this:
-  
+Để tạo thêm đĩa, hãy sửa đổi tệp soạn thảo của bạn như thế này:
+
   ```yaml
   environment:
     DISK2_SIZE: "32G"
@@ -310,9 +308,9 @@ docker run -it --rm --name windows -e "VERSION=11" -p 8006:8006 --device=/dev/kv
     - ./example3:/storage3
   ```
 
-### How do I pass-through a disk?
+### Làm cách nào để chuyển qua đĩa?
 
-  It is possible to pass-through disk devices or partitions directly by adding them to your compose file in this way:
+Có thể chuyển trực tiếp các thiết bị đĩa hoặc phân vùng bằng cách thêm chúng vào tệp soạn thảo của bạn theo cách này:
 
   ```yaml
   devices:
@@ -320,11 +318,11 @@ docker run -it --rm --name windows -e "VERSION=11" -p 8006:8006 --device=/dev/kv
     - /dev/sdc1:/disk2
   ```
 
-  Use `/disk1` if you want it to become your main drive (which will be formatted during installation), and use `/disk2` and higher to add them as secondary drives (which will stay untouched).
+ Sử dụng `/disk1` nếu bạn muốn nó trở thành ổ đĩa chính của mình (sẽ được định dạng trong khi cài đặt) và sử dụng `/disk2` trở lên để thêm chúng làm ổ đĩa phụ (sẽ không bị ảnh hưởng).
 
-### How do I pass-through a USB device?
+### Làm cách nào để chuyển qua thiết bị USB?
 
-  To pass-through a USB device, first lookup its vendor and product id via the `lsusb` command, then add them to your compose file like this:
+ Để chuyển qua thiết bị USB, trước tiên hãy tra cứu id nhà cung cấp và sản phẩm của thiết bị đó thông qua lệnh `lsusb`, sau đó thêm chúng vào tệp soạn thảo của bạn như sau:
 
   ```yaml
   environment:
@@ -333,11 +331,11 @@ docker run -it --rm --name windows -e "VERSION=11" -p 8006:8006 --device=/dev/kv
     - /dev/bus/usb
   ```
 
-  If the device is a USB disk drive, please wait until after the installation is fully completed before connecting it. Otherwise the installation may fail, as the order of the disks can get rearranged.
+ Nếu thiết bị là ổ đĩa USB, vui lòng đợi cho đến khi quá trình cài đặt hoàn tất trước khi kết nối. Nếu không, quá trình cài đặt có thể không thành công vì thứ tự của các đĩa có thể bị sắp xếp lại.
 
-### How do I verify if my system supports KVM?
+### Làm cách nào để xác minh xem hệ thống của tôi có hỗ trợ KVM hay không?
 
-  First check if your software is compatible using this chart:
+ Trước tiên hãy kiểm tra xem phần mềm của bạn có tương thích hay không bằng biểu đồ này:
 
   | **Product**  | **Linux** | **Win11** | **Win10** | **macOS** |
   |---|---|---|---|---|
@@ -346,38 +344,38 @@ docker run -it --rm --name windows -e "VERSION=11" -p 8006:8006 --device=/dev/kv
   | Podman CLI        | ✅   | ✅       | ❌        | ❌ | 
   | Podman Desktop    | ✅   | ✅       | ❌        | ❌ | 
 
-  After that you can run the following commands in Linux to check your system:
+  Sau đó, bạn có thể chạy các lệnh sau trong Linux để kiểm tra hệ thống của mình:
 
   ```bash
   sudo apt install cpu-checker
   sudo kvm-ok
   ```
 
-  If you receive an error from `kvm-ok` indicating that KVM cannot be used, please check whether:
+  Nếu bạn nhận được lỗi từ `kvm-ok` cho biết không thể sử dụng KVM, vui lòng kiểm tra xem:
 
-  - the virtualization extensions (`Intel VT-x` or `AMD SVM`) are enabled in your BIOS.
+- các tiện ích mở rộng ảo hóa (`Intel VT-x` hoặc `AMD SVM`) được bật trong BIOS của bạn.
 
-  - you enabled "nested virtualization" if you are running the container inside a virtual machine.
+- bạn đã bật "ảo hóa lồng nhau" nếu bạn đang chạy vùng chứa bên trong máy ảo.
 
-  - you are not using a cloud provider, as most of them do not allow nested virtualization for their VPS's.
+- bạn hiện không sử dụng nhà cung cấp đám mây vì hầu hết họ không cho phép ảo hóa lồng nhau cho VPS của họ.
 
-  If you did not receive any error from `kvm-ok` but the container still complains about a missing KVM device, it could help to add `privileged: true` to your compose file (or `sudo` to your `docker` command) to rule out any permission issue.
+Nếu bạn không nhận được bất kỳ lỗi nào từ `kvm-ok` nhưng vùng chứa vẫn phàn nàn về việc thiếu thiết bị KVM, bạn có thể thêm `privileged: true` vào tệp soạn thảo của mình (hoặc `sudo` vào lệnh `docker` của bạn) để loại trừ mọi vấn đề về quyền.
 
-### How do I run macOS in a container?
+### Làm cách nào để chạy macOS trong vùng chứa?
 
-  You can use [dockur/macos](https://github.com/dockur/macos) for that. It shares many of the same features, except for the automatic installation.
+Bạn có thể sử dụng [dockur/macos](https://github.com/dockur/macos) để làm việc đó. Nó có nhiều tính năng giống nhau, ngoại trừ việc cài đặt tự động.
 
-### How do I run a Linux desktop in a container?
+### Làm cách nào để chạy máy tính để bàn Linux trong vùng chứa?
 
-  You can use [qemus/qemu](https://github.com/qemus/qemu) in that case.
+Bạn có thể sử dụng [qemus/qemu](https://github.com/qemus/qemu) trong trường hợp đó.
 
-### Is this project legal?
+###Dự án này có hợp pháp không?
 
-  Yes, this project contains only open-source code and does not distribute any copyrighted material. Any product keys found in the code are just generic placeholders provided by Microsoft for trial purposes. So under all applicable laws, this project will be considered legal.
+Có, dự án này chỉ chứa mã nguồn mở và không phân phối bất kỳ tài liệu có bản quyền nào. Mọi khóa sản phẩm được tìm thấy trong mã chỉ là các phần giữ chỗ chung do Microsoft cung cấp cho mục đích dùng thử. Vì vậy, theo tất cả các luật hiện hành, dự án này sẽ được coi là hợp pháp.
 
-## Disclaimer ⚖️
+## Tuyên bố từ chối trách nhiệm ⚖️
 
-*The product names, logos, brands, and other trademarks referred to within this project are the property of their respective trademark holders. This project is not affiliated, sponsored, or endorsed by Microsoft Corporation.*
+*Tên sản phẩm, logo, nhãn hiệu và các nhãn hiệu khác được đề cập trong dự án này là tài sản của chủ sở hữu nhãn hiệu tương ứng. Dự án này không được liên kết, tài trợ hoặc chứng thực bởi Tập đoàn Microsoft.*
 
 [build_url]: https://github.com/dockur/windows/
 [hub_url]: https://hub.docker.com/r/dockurr/windows/
