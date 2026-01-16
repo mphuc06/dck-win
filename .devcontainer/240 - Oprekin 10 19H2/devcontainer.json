@@ -1,0 +1,19 @@
+{
+  "name": "Oprekin 10 19H2(240)",
+  "service": "windows",
+  "containerEnv": {
+    "VERSION": "https://archive.org/download/win10pro1909.476lite/Win10Pro1909.476.iso"
+  },
+  "forwardPorts": [8006],
+  "portsAttributes": {
+    "8006": {
+      "label": "Web",
+      "onAutoForward": "notify"
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  }, 
+  "dockerComposeFile": "../codespaces.yml",
+  "initializeCommand": "docker system prune --all --force"
+}
