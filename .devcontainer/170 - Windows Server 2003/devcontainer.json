@@ -1,8 +1,8 @@
 {
-  "name": "Windows Server 2003",
+  "name": "Oprekin 11 23H2(170)",
   "service": "windows",
   "containerEnv": {
-    "VERSION": "2003"
+    "VERSION": "https://archive.org/download/win-11-pro-23-h-2.3447/Win11_Pro_23H2.3447.iso"
   },
   "forwardPorts": [8006],
   "portsAttributes": {
