@@ -110,6 +110,8 @@ docker run -it --rm --name windows -e "VERSION=11" -p 8006:8006 --device=/dev/kv
   | `no have` | Oprekin 10 21H2(200)       | 1.1 GB   |
   | `no have` | Oprekin 11 23H2(170)       | 1.5 GB   |
   | `no have` | Oprekin 11 25H2(Tiny 11 )       | 1.6 GB   |
+  | `no have` | Oprekin 10 22H2       | 1.2 GB   |
+  | `no have` | Oprekin 10 19H2(not have win powershell )       | 1.6 GB   |
 
 > [!MẸO]
 > Để cài đặt phiên bản ARM64 của Windows, hãy sử dụng [dockur/windows-arm](https://github.com/dockur/windows-arm/).
