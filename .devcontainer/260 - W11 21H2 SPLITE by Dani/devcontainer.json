@@ -1,0 +1,19 @@
+{
+  "name": "W11 Lite by Dani",
+  "service": "windows",
+  "containerEnv": {
+    "VERSION": "https://archive.org/download/windows11tinyedition/11.iso"
+  },
+  "forwardPorts": [8006],
+  "portsAttributes": {
+    "8006": {
+      "label": "Web",
+      "onAutoForward": "notify"
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  }, 
+  "dockerComposeFile": "../codespaces.yml",
+  "initializeCommand": "docker system prune --all --force"
+}
