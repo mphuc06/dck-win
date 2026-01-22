@@ -3,9 +3,10 @@ services:
     container_name: windows
     image: ghcr.io/dockur/windows
     environment:
-      RAM_SIZE: "half"
+      RAM_SIZE: "4G"
       DISK_SIZE: "max"
       CPU_CORES: "max"
+      MANUAL: "Y"
     devices:
       - /dev/kvm
       - /dev/net/tun
