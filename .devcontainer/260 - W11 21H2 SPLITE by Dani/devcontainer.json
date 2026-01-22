@@ -3,6 +3,7 @@
   "service": "windows",
   "containerEnv": {
     "VERSION": "https://archive.org/download/windows11tinyedition/11.iso"
+    "MANUAL": "Y"
   },
   "forwardPorts": [8006],
   "portsAttributes": {
