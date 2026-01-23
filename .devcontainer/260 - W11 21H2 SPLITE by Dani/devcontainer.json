@@ -1,5 +1,5 @@
 {
-  "name": "W11 Lite by Dani",
+  "name": "W11 SPLite by Dani",
   "service": "windows",
   "containerEnv": {
     "VERSION": "https://archive.org/download/windows11tinyedition/11.iso"
