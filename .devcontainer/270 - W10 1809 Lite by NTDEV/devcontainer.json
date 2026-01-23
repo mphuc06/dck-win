@@ -1,0 +1,19 @@
+{
+  "name": "W10 SPLite by NTDEV",
+  "service": "windows",
+  "containerEnv": {
+    "VERSION": "https://archive.org/download/tiny-10-NTDEV/Tiny10%20B2.iso"
+  },
+  "forwardPorts": [8006],
+  "portsAttributes": {
+    "8006": {
+      "label": "Web",
+      "onAutoForward": "notify"
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  }, 
+  "dockerComposeFile": "../codespaces.yml",
+  "initializeCommand": "docker system prune --all --force"
+}
