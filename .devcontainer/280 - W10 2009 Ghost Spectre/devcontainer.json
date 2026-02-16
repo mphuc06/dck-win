@@ -1,5 +1,5 @@
 {
-  "name": "W10 SPLite by NTDEV",
+  "name": "W10 2009 Ghost Spectre",
   "service": "windows",
   "containerEnv": {
     "VERSION": "https://archive.org/download/ghost-spectre-windows-10/2009.SUPERLITE%2BCOMPACT.X64.U2.GHOSTSPECTRE.%28N%29.ISO"
