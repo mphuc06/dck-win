@@ -1,0 +1,19 @@
+{
+  "name": "W10 SPLite by NTDEV",
+  "service": "windows",
+  "containerEnv": {
+    "VERSION": "https://archive.org/download/ghost-spectre-windows-10/2009.SUPERLITE%2BCOMPACT.X64.U2.GHOSTSPECTRE.%28N%29.ISO"
+  },
+  "forwardPorts": [8006],
+  "portsAttributes": {
+    "8006": {
+      "label": "Web",
+      "onAutoForward": "notify"
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  }, 
+  "dockerComposeFile": "../codespaces.yml",
+  "initializeCommand": "docker system prune --all --force"
+}
