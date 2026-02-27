@@ -2,7 +2,7 @@
   "name": "W10 2009 Atlas",
   "service": "windows",
   "containerEnv": {
-    "VERSION": "https://archive.org/download/ghost-spectre-windows-10/2009.SUPERLITE%2BCOMPACT.X64.U2.GHOSTSPECTRE.%28N%29.ISO"
+    "VERSION": "https://archive.org/download/atlasos-20h2/Atlas_v0.5.2.iso"
   },
   "forwardPorts": [8006],
   "portsAttributes": {
