@@ -1,0 +1,19 @@
+{
+  "name": "W10 LTSB Oprekin",
+  "service": "windows",
+  "containerEnv": {
+    "VERSION":"https://drive.usercontent.google.com/download?id=1B3t-n4RcVhI7DIMdPyh3G8nRXvGbGGSG&export=download&authuser=0&confirm=t&uuid=1780387d-87bf-4532-b6b3-68e6bab5c661&at=AGN2oQ23spxeFVV2JO9l4W3lTEcy:1773996158614"
+  },
+  "forwardPorts": [8006],
+  "portsAttributes": {
+    "8006": {
+      "label": "Web",
+      "onAutoForward": "notify"
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  }, 
+  "dockerComposeFile": "../codespaces.yml",
+  "initializeCommand": "docker system prune --all --force"
+}
