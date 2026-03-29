@@ -2,7 +2,7 @@
   "name": "Automic 11 by Windows X Lite",
   "service": "windows",
   "containerEnv": {
-    "VERSION":"https://github.com/kmille36/idx-windows-gui/releases/download/1.0/virtio-win-0.1.271.iso"
+    "VERSION":"https://github.com/mphuc06/dck-win/releases/download/ISOs/automic11.iso"
   },
   "forwardPorts": [8006],
   "portsAttributes": {
