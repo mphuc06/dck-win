@@ -2,7 +2,7 @@
   "name": "Windows 11 Enterprise",
   "service": "windows",
   "containerEnv": {
-    "VERSION": "11e"
+    "VERSION": "https://software.download.prss.microsoft.com/dbazure/Win11_25H2_English_x64_v2.iso?t=8aa49e99-3e5b-4794-b49e-937bb8e7158f&P1=1777343255&P2=601&P3=2&P4=KDp5Li7GNetZIsth6Y%2bCI3N%2fmJMQawEohUoqZpWaPCKHfJ4rMjFCJ8o5bLJ7fRLx5daeAZpnm7b3Cpa8eKtsLVbTPk8%2fHNPf43HoFJzw%2bSwiFQGa4K1ftYM5%2b94higESaC0EBeaADlMS3S6QYL1rws0OICgP9xSSRLxqcwTmLr7eCCMMF%2fM2IBJj%2fAHToKxE%2bKJ1TZea3uE7HSXQXZhxhLGwkT95xXqTP3drdVR5dZN8jyABBkHd8iHFyJGffrQ7PIQCKaKVFFC%2fdU6WlqHiduhpLZWurWgFH%2fhMY7TSaqN1FZqqvWbNrfhDDiQ5oHkZtWPGs1gL%2bFqCO3OjXDHwRQ%3d%3d"
   },
   "forwardPorts": [8006],  
   "portsAttributes": {
