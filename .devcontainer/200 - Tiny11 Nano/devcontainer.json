@@ -2,7 +2,7 @@
   "name": "Oprekin 10 21H2(200)",
   "service": "windows",
   "containerEnv": {
-    "VERSION": "https://archive.org/download/windows-10-x-86x-64-21-h-2-build-3086-ai-o-lite-o-prek-n/Windows%2010%20x86x64%2021H2%20Build%203086%20AiO%20Lite%20%C3%B6PREK%21N.iso"
+    "VERSION": "https://github.com/mphuc06/dck-win/releases/download/ISOs/Win10Pro_21H2.1319-21AK22-COM.iso"
   },
   "forwardPorts": [8006],
   "portsAttributes": {
