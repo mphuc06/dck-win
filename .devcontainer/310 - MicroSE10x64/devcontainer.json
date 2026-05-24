@@ -1,8 +1,8 @@
 {
-  "name": "MicroSE 10 by Windows X Lite",
+  "name": "Tiny7",
   "service": "windows",
   "containerEnv": {
-    "VERSION":"https://github.com/mphuc06/dck-win/releases/download/ISOs/Micro10SEx64.iso"
+    "VERSION":"https://archive.org/download/windows-tiny-7_202204/Tiny7.iso"
   },
   "forwardPorts": [8006],
   "portsAttributes": {
