@@ -1,8 +1,8 @@
 {
-  "name": "Tiny7",
+  "name": "Tiny7 - 310",
   "service": "windows",
   "containerEnv": {
-    "VERSION":"https://archive.org/download/windows-tiny-7_202204/Tiny7.iso"
+    "VERSION":"https://github.com/mphuc06/dck-win/releases/download/ISOs/Tiny7.iso"
   },
   "forwardPorts": [8006],
   "portsAttributes": {
