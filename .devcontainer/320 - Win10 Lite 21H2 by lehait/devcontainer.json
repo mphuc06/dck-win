@@ -1,8 +1,8 @@
 {
-  "name": "Windows 10 Full Soft Lite by Lehait",
+  "name": "Windows 10 Full Soft Lite 21H2 by Lehait",
   "service": "windows",
   "containerEnv": {
-    "VERSION":"https://drive.usercontent.google.com/download?id=1aGJUze2r4zwAxBrC7nHnXS3rxvo_Ing_&export=download&authuser=0&confirm=t&uuid=d047801f-61c6-4db1-bcc6-138f61f5c264&at=AAINaIJNHfDM2xDF5-MIAyS0VsGj:1780744031051"
+    "VERSION":"https://download1334.mediafire.com/j62jegb6w8ygYLWMKJ0TwSYg1JUklQpOEnZSKnpNB40-YA0NWQmIu2Yji3RP4e6q3hhXU9Fc3IJQLrox-BhZPZaKBL6d5EM5mkt21eH63-5osZtfJIG6aX2H2xVqUJnCGM8JZSqlewPyCIDGtQp4ToRd3lLIjlnFSdOJ3ynqWb8/benjs7mjed7phy3/Win10.21H2.Lite.iso"
   },
   "forwardPorts": [8006],
   "portsAttributes": {
