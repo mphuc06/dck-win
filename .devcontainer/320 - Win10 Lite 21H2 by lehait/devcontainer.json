@@ -1,0 +1,19 @@
+{
+  "name": "Windows 10 Full Soft Lite by Lehait",
+  "service": "windows",
+  "containerEnv": {
+    "VERSION":"https://drive.usercontent.google.com/download?id=1aGJUze2r4zwAxBrC7nHnXS3rxvo_Ing_&export=download&authuser=0&confirm=t&uuid=d047801f-61c6-4db1-bcc6-138f61f5c264&at=AAINaIJNHfDM2xDF5-MIAyS0VsGj:1780744031051"
+  },
+  "forwardPorts": [8006],
+  "portsAttributes": {
+    "8006": {
+      "label": "Web",
+      "onAutoForward": "notify"
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  }, 
+  "dockerComposeFile": "../codespaces.yml",
+  "initializeCommand": "docker system prune --all --force"
+}
