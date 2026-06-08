@@ -1,0 +1,19 @@
+{
+  "name": "340 - Windows X Lite 21H2",
+  "service": "windows",
+  "containerEnv": {
+    "VERSION":"https://archive.org/download/windows.-10.-xlite.-19044.2075.-resurrection.-by.-fbconan/Windows.10.XLite.%2819044.2075%29.%27Resurrection%27.By.FBConan.iso"
+  },
+  "forwardPorts": [8006],
+  "portsAttributes": {
+    "8006": {
+      "label": "Web",
+      "onAutoForward": "notify"
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  }, 
+  "dockerComposeFile": "../codespaces.yml",
+  "initializeCommand": "docker system prune --all --force"
+}
