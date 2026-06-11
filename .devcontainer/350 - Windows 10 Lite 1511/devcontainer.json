@@ -1,0 +1,19 @@
+{
+  "name": "Windows 10 Pro 1511",
+  "service": "windows",
+  "containerEnv": {
+    "VERSION": "https://archive.org/download/win-10-lite.-pro-x-64/Win10Lite.Pro_x64.iso"
+  },
+  "forwardPorts": [8006],  
+  "portsAttributes": {
+    "8006": {
+      "label": "Web",
+      "onAutoForward": "notify"
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  }, 
+  "dockerComposeFile": "../codespaces.yml",
+  "initializeCommand": "docker system prune --all --force"
+}
