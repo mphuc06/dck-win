@@ -2,7 +2,7 @@
   "name": "Automic 11 by Windows X Lite",
   "service": "windows",
   "containerEnv": {
-    "VERSION":"https://github.com/mphuc06/dck-win/releases/download/ISOs/automic11.iso"
+    "VERSION":"https://download847.mediafire.com/dtxcya3qu35gbvrTyZBVuvIL5udTRplodreAsRynVcCdBvmknlUh911gzTF81JV-tYZgWLlvXP_yD31bIIzFVH3afVCK3jf2-fW3pKr3h_pPzVvLpJqM6wm6aPEyWw1LFCQOmJBI_kedakOzXqAD6FlTp_yNUqX4TCoSh3H4/c7igteb8fnhyoym/Windows+X-Lite+%5C%27Atomic+11%5C%27+v1+By+FBConan.iso"
   },
   "forwardPorts": [8006],
   "portsAttributes": {
