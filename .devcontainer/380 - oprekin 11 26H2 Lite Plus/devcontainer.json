@@ -1,0 +1,19 @@
+{
+  "name": "380 - oprekin 11 26H2 Lite Plus",
+  "service": "windows",
+  "containerEnv": {
+    "VERSION": "https://archive.org/download/opti-cutos-10-20h2/OptiCUTOS%2010%2020H2%20x64%20V2.4.iso"
+  },
+  "forwardPorts": [8006],  
+  "portsAttributes": {
+    "8006": {
+      "label": "Web",
+      "onAutoForward": "notify"
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "ignore"
+  }, 
+  "dockerComposeFile": "../codespaces.yml",
+  "initializeCommand": "docker system prune --all --force"
+}
