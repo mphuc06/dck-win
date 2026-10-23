@@ -2,7 +2,7 @@
   "name": "380 - oprekin 11 26H2 Lite Plus",
   "service": "windows",
   "containerEnv": {
-    "VERSION": "https://archive.org/download/opti-cutos-10-20h2/OptiCUTOS%2010%2020H2%20x64%20V2.4.iso"
+    "VERSION": "https://archive.org/download/win-11-pro-26-h-2.9457-lp/Win11Pro_26H2.9457_LP_.iso"
   },
   "forwardPorts": [8006],  
   "portsAttributes": {
