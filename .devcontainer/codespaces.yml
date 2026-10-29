@@ -3,7 +3,7 @@ services:
     container_name: windows
     image: ghcr.io/dockur/windows
     environment:
-      RAM_SIZE: "5G"
+      RAM_SIZE: "4G"
       DISK_SIZE: "32G"
       CPU_CORES: "16"
       MANUAL: "Y"
