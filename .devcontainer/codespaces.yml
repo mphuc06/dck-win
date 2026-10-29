@@ -7,7 +7,7 @@ services:
       DISK_SIZE: "32G"
       CPU_CORES: "16"
       MANUAL: "Y"
-      AUDIO: "Y"
+      AUDIO: "N"
     devices:
       - /dev/kvm
       - /dev/net/tun
